@@ -1,32 +1,11 @@
-import { useState } from "react";
+import { Link } from "react-router";
 
-function Header({ setSearchTerm }) {
-  const [tempSearchTerm, setTempSearchTerm] = useState("");
-
-  function handleChange(e) {
-    setTempSearchTerm(e.target.value);
-  }
-
-  function handleSearch(e) {
-    e.preventDefault();
-    setSearchTerm(tempSearchTerm);
-  }
-
+function Header() {
   return (
     <>
-      <h1>NC News</h1>
-      <form onSubmit={handleSearch}>
-        <input
-          onChange={handleChange}
-          value={tempSearchTerm}
-          type="text"
-          placeholder="Search articles..."
-          className="searchbar"
-        />
-        <button className="search-btn" onClick={handleChange}>
-          Search
-        </button>
-      </form>
+      <Link to="/" className="header-title">
+        <h1>NC News</h1>
+      </Link>
     </>
   );
 }

@@ -7,6 +7,19 @@ h1 {
   border: 1px dotted black;
 }
 
+.header-title {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar {
+  display: flex;
+  list-style: none;
+  margin-bottom: 20px;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
 ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
