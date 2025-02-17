@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchArticles } from "../server";
+import { Link } from "react-router";
 
 function ArticleList() {
   const [articles, setArticles] = useState([]);
@@ -23,8 +24,10 @@ function ArticleList() {
         {articles.map((article) => {
           return (
             <li key={article.article_id}>
-              <h3>{article.title}</h3>
-              <img src={article.article_img_url} />
+              <Link to={`/articles/${article.article_id}`}>
+                <h3>{article.title}</h3>
+                <img src={article.article_img_url} />
+              </Link>
             </li>
           );
         })}
