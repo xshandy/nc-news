@@ -8,8 +8,8 @@ function ArticleList() {
 
   useEffect(() => {
     setLoading(true);
-    fetchArticles().then((data) => {
-      setArticles(data);
+    fetchArticles().then((articlesdata) => {
+      setArticles(articlesdata);
       setLoading(false);
     });
   }, []);
@@ -20,7 +20,7 @@ function ArticleList() {
 
   return (
     <div className="articleList-container">
-      <ul>
+      <ul className="articleList">
         {articles.map((article) => {
           return (
             <li key={article.article_id}>

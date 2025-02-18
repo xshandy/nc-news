@@ -7,8 +7,8 @@ function CommentList({ article_id }) {
 
   useEffect(() => {
     setLoading(true);
-    fetchCommentsByArticleId(article_id).then((data) => {
-      setComments(data);
+    fetchCommentsByArticleId(article_id).then((commentData) => {
+      setComments(commentData);
       setLoading(false);
     });
   }, [article_id]);
