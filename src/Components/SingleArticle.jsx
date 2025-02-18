@@ -1,12 +1,13 @@
 import { useParams } from "react-router";
 import { fetchArticleByArticleId } from "../server";
 import { useState, useEffect } from "react";
+import CommentList from "./CommentList";
 
 function SingleArticle() {
   const [article, setArticle] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const { article_id } = useParams();
-  console.log(article_id);
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +28,7 @@ function SingleArticle() {
       <p>Votes:{article.votes}</p>
       <img src={article.article_img_url} />
       <p>{article.body}</p>
+      <CommentList article_id={article_id} />
     </div>
   );
 }
