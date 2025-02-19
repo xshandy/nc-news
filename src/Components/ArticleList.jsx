@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchArticles } from "../server";
+import { fetchArticles } from "../api";
 import { Link } from "react-router";
 
 function ArticleList() {

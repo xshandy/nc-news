@@ -5,9 +5,12 @@ const ncnewsAPI = axios.create({
 });
 
 export const fetchArticles = () => {
-  return ncnewsAPI.get(`articles`).then(({ data }) => {
-    return data.articles;
-  });
+  return ncnewsAPI
+    .get(`articles`)
+    .then(({ data }) => {
+      return data.articles;
+    })
+    .catch(console.log);
 };
 
 export const fetchArticleByArticleId = (article_id) => {
@@ -24,7 +27,7 @@ export const fetchCommentsByArticleId = (article_id) => {
 
 export const updateArticleVotes = (vote, article_id) => {
   return ncnewsAPI
-    .patch(`articles/${article_id}`, { inc_votes: { vote } })
+    .patch(`articles/${article_id}`, { inc_votes: vote })
     .then(({ data }) => {
       return data.article.votes;
     });

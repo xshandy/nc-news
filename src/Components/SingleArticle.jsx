@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { fetchArticleByArticleId } from "../server";
+import { fetchArticleByArticleId } from "../api";
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import Voting from "./Voting";
