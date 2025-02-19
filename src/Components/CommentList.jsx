@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchCommentsByArticleId } from "../api";
+import AddNewComment from "./AddNewComment";
 
 function CommentList({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -13,6 +14,10 @@ function CommentList({ article_id }) {
     });
   }, [article_id]);
 
+  function handleNewComment(newComment) {
+    setComments((c) => [newComment, ...c]);
+  }
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -20,17 +25,23 @@ function CommentList({ article_id }) {
   return (
     <div className="comments-container">
       <h3>Comments</h3>
-      <ul>
-        {comments.map((comment) => {
-          return (
-            <li key={comment.comment_id}>
-              <p>{comment.author}</p>
-              <p>{comment.body}</p>
-              <p>Votes:{comment.votes}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="comment-list">
+        <AddNewComment
+          article_id={article_id}
+          addingComment={handleNewComment}
+        />
+        <ul>
+          {comments.map((comment) => {
+            return (
+              <li key={comment.comment_id} className="comment">
+                <p className="author-comment">{comment.author}</p>
+                <p>{comment.body}</p>
+                <p className="vote-comment">Votes:{comment.votes}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
