@@ -1,8 +1,9 @@
 import { useParams } from "react-router";
-import { fetchArticleByArticleId } from "../server";
+import { fetchArticleByArticleId } from "../api";
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import Voting from "./Voting";
+import NewComment from "./AddNewComment";
 
 function SingleArticle() {
   const [article, setArticle] = useState([]);
@@ -35,6 +36,7 @@ function SingleArticle() {
 
       <img src={article.article_img_url} />
       <p>{article.body}</p>
+
       <CommentList article_id={article_id} />
     </div>
   );

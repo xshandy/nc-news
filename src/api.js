@@ -24,8 +24,22 @@ export const fetchCommentsByArticleId = (article_id) => {
 
 export const updateArticleVotes = (vote, article_id) => {
   return ncnewsAPI
-    .patch(`articles/${article_id}`, { inc_votes: { vote } })
+    .patch(`articles/${article_id}`, { inc_votes: vote })
     .then(({ data }) => {
       return data.article.votes;
     });
+};
+
+export const postComment = (newComment, article_id) => {
+  return ncnewsAPI
+    .post(`articles/${article_id}/comments`, newComment)
+    .then(({ data }) => {
+      return data.postedComment;
+    });
+};
+
+export const fetchUsers = () => {
+  return ncnewsAPI.get(`users`).then(({ data }) => {
+    return data.users;
+  });
 };
