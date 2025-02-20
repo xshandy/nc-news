@@ -4,8 +4,8 @@ const ncnewsAPI = axios.create({
   baseURL: `https://backend-project-nc-news-owjq.onrender.com/api/`,
 });
 
-export const fetchArticles = () => {
-  return ncnewsAPI.get(`articles`).then(({ data }) => {
+export const fetchArticles = (topic) => {
+  return ncnewsAPI.get(`articles`, { params: { topic } }).then(({ data }) => {
     return data.articles;
   });
 };
@@ -46,4 +46,10 @@ export const fetchUsers = () => {
 
 export const deleteCommentById = (comment_id) => {
   return ncnewsAPI.delete(`comments/${comment_id}`);
+};
+
+export const fetchTopics = () => {
+  return ncnewsAPI.get(`topics`).then(({ data }) => {
+    return data.topics;
+  });
 };

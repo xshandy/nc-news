@@ -1,18 +1,28 @@
 import { useState, useEffect } from "react";
 import { fetchArticles } from "../api";
 import { Link } from "react-router";
+import { useSearchParams } from "react-router";
 
 function ArticleList() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const topicQuery = searchParams.get("topic");
+
+  function setTopic(topic) {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("topic", topic);
+    setSearchParams(newParams);
+  }
 
   useEffect(() => {
     setLoading(true);
-    fetchArticles().then((articlesdata) => {
+    fetchArticles(topicQuery).then((articlesdata) => {
       setArticles(articlesdata);
       setLoading(false);
     });
-  }, []);
+  }, [topicQuery]);
 
   if (loading) {
     return <p>Loading...</p>;

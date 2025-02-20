@@ -3,7 +3,6 @@ import { fetchArticleByArticleId } from "../api";
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import Voting from "./Voting";
-import NewComment from "./AddNewComment";
 
 function SingleArticle() {
   const [article, setArticle] = useState([]);
