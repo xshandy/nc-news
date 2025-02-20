@@ -88,3 +88,15 @@ img {
 .select-user:focus {
   border-color: #6cd4ff;
 }
+
+.error-message {
+  color: red;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.failed-message {
+  color: red;
+  font-size: large;
+  font-weight: bolder;
+}
