@@ -43,3 +43,7 @@ export const fetchUsers = () => {
     return data.users;
   });
 };
+
+export const deleteCommentById = (comment_id) => {
+  return ncnewsAPI.delete(`comments/${comment_id}`);
+};

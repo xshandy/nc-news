@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchCommentsByArticleId } from "../api";
 import AddNewComment from "./AddNewComment";
+import DeleteAComment from "./DeleteAComment";
 
 function CommentList({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -18,6 +19,11 @@ function CommentList({ article_id }) {
     setComments((c) => [newComment, ...c]);
   }
 
+  function handleDelete(index) {
+    const updatedComments = comments.filter((_, i) => i !== index);
+    setComments(updatedComments);
+  }
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -31,12 +37,18 @@ function CommentList({ article_id }) {
           addingComment={handleNewComment}
         />
         <ul>
-          {comments.map((comment) => {
+          {comments.map((comment, index) => {
             return (
               <li key={comment.comment_id} className="comment">
                 <p className="author-comment">{comment.author}</p>
                 <p>{comment.body}</p>
                 <p className="vote-comment">Votes:{comment.votes}</p>
+
+                <DeleteAComment
+                  handleDelete={handleDelete}
+                  index={index}
+                  comment_id={comment.comment_id}
+                />
               </li>
             );
           })}
