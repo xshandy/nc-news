@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./Components/NavBar";
 import SingleArticle from "./Components/SingleArticle";
 import { Routes, Route } from "react-router";
+import TopicsList from "./Components/TopicsList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<ArticleList />}></Route>
         <Route path="/articles" element={<ArticleList />}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
+        <Route path="/topics" element={<TopicsList />}></Route>
       </Routes>
     </>
   );
