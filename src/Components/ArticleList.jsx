@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchArticles } from "../api";
 import { Link } from "react-router";
 import { useSearchParams } from "react-router";
+import SortingDropdown from "./SortingDropdown";
 
 function ArticleList() {
   const [articles, setArticles] = useState([]);
@@ -9,6 +10,8 @@ function ArticleList() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const topicQuery = searchParams.get("topic");
+  const sortByQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
   function setTopic(topic) {
     const newParams = new URLSearchParams(searchParams);
@@ -18,11 +21,15 @@ function ArticleList() {
 
   useEffect(() => {
     setLoading(true);
-    fetchArticles(topicQuery).then((articlesdata) => {
+    fetchArticles({
+      topic: topicQuery,
+      sort_by: sortByQuery,
+      order: orderQuery,
+    }).then((articlesdata) => {
       setArticles(articlesdata);
       setLoading(false);
     });
-  }, [topicQuery]);
+  }, [topicQuery, sortByQuery, orderQuery]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -30,6 +37,11 @@ function ArticleList() {
 
   return (
     <div className="articleList-container">
+      <SortingDropdown
+        setSearchParams={setSearchParams}
+        orderQuery={orderQuery}
+        sortByQuery={sortByQuery}
+      />
       <ul className="articleList">
         {articles.map((article) => {
           return (
