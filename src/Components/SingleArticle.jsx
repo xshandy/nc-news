@@ -3,6 +3,7 @@ import { fetchArticleByArticleId } from "../api";
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
 import Voting from "./Voting";
+import { useErrorBoundary } from "react-error-boundary";
 
 function SingleArticle() {
   const [article, setArticle] = useState([]);
@@ -10,12 +11,16 @@ function SingleArticle() {
 
   const { article_id } = useParams();
 
+  const { showBoundary } = useErrorBoundary();
+
   useEffect(() => {
     setLoading(true);
-    fetchArticleByArticleId(article_id).then((singleArticleData) => {
-      setArticle(singleArticleData);
-      setLoading(false);
-    });
+    fetchArticleByArticleId(article_id)
+      .then((singleArticleData) => {
+        setArticle(singleArticleData);
+        setLoading(false);
+      })
+      .catch((error) => showBoundary(error));
   }, [article_id]);
 
   if (loading) {
