@@ -25,10 +25,12 @@ function ArticleList() {
       topic: topicQuery,
       sort_by: sortByQuery,
       order: orderQuery,
-    }).then((articlesdata) => {
-      setArticles(articlesdata);
-      setLoading(false);
-    });
+    })
+      .then((articlesdata) => {
+        setArticles(articlesdata);
+        setLoading(false);
+      })
+      .catch((error) => showBoundary(error));
   }, [topicQuery, sortByQuery, orderQuery]);
 
   if (loading) {
