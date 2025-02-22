@@ -6,6 +6,7 @@ import SingleArticle from "./Components/SingleArticle";
 import { Routes, Route } from "react-router";
 import TopicsList from "./Components/TopicsList";
 import NotFound from "./Components/NotFound";
+import UserSelection from "./Components/UserSelection";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/articles" element={<ArticleList />}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
         <Route path="/topics" element={<TopicsList />}></Route>
+        <Route path="/users" element={<UserSelection />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

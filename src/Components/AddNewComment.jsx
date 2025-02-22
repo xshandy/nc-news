@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { postComment } from "../api";
-import ValidUsers from "./ValidUsers";
+import { useUser } from "./UserContext";
 
 function AddNewComment({ article_id, addingComment }) {
   const [commentToPost, setCommentToPost] = useState("");
-  const [selectedUser, setSelectedUser] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+
+  const { selectedUser } = useUser();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,7 +18,7 @@ function AddNewComment({ article_id, addingComment }) {
     }
 
     if (!selectedUser) {
-      setError("Please select a user.");
+      setError("You must be logged in to comment");
       return;
     }
 
@@ -27,6 +28,7 @@ function AddNewComment({ article_id, addingComment }) {
       .then((postedCommentData) => {
         addingComment(postedCommentData);
         setCommentToPost("");
+        setError("");
       })
       .catch(() => {
         setMessage("Failed to post. Please try again.");
@@ -39,10 +41,9 @@ function AddNewComment({ article_id, addingComment }) {
       {message && <p className="failed-message">{message}</p>}
 
       <form onSubmit={handleSubmit}>
-        <ValidUsers
-          selectedUser={selectedUser}
-          setSelectedUser={setSelectedUser}
-        />
+        <p>
+          Posting as: <strong>{selectedUser}</strong>
+        </p>
         <br />
         <textarea
           type="text"

@@ -12,7 +12,7 @@ function ValidUsers({ selectedUser, setSelectedUser }) {
 
   return (
     <select
-      value={selectedUser}
+      value={selectedUser || ""}
       onChange={(e) => setSelectedUser(e.target.value)}
       className="select-user"
     >

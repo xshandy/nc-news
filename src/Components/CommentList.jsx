@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { fetchCommentsByArticleId } from "../api";
 import AddNewComment from "./AddNewComment";
 import DeleteAComment from "./DeleteAComment";
+import { useUser } from "./UserContext";
 
 function CommentList({ article_id }) {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { selectedUser } = useUser();
 
   useEffect(() => {
     setLoading(true);
@@ -32,10 +34,16 @@ function CommentList({ article_id }) {
     <div className="comments-container">
       <h3>Comments</h3>
       <div className="comment-list">
-        <AddNewComment
-          article_id={article_id}
-          addingComment={handleNewComment}
-        />
+        {selectedUser ? (
+          <AddNewComment
+            article_id={article_id}
+            addingComment={handleNewComment}
+            selectedUser={selectedUser}
+          />
+        ) : (
+          <p>Please log in to add a comment</p>
+        )}
+
         <ul>
           {comments.map((comment, index) => {
             return (

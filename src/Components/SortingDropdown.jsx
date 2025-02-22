@@ -1,13 +1,5 @@
 function SortingDropdown({ setSearchParams, orderQuery, sortByQuery }) {
-  const sortByGreenList = [
-    "created_at",
-    "title",
-    "author",
-    "topic",
-    "article_id",
-    "votes",
-    "comment_count",
-  ];
+  const sortByGreenList = ["created_at", "votes", "comment_count"];
 
   const orderOption = ["desc", "asc"];
 
