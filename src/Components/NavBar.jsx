@@ -6,7 +6,7 @@ function NavBar() {
 
   return (
     <nav className="navbar">
-      <Link to="#">
+      <Link to="/articles">
         <p>Articles</p>
       </Link>
       <Link to="/topics">

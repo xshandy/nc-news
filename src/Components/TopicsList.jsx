@@ -27,6 +27,7 @@ function TopicsList() {
               <Link to={`/articles?topic=${topic.slug}`}>
                 <h3>{topic.slug}</h3>
               </Link>
+              <p>{topic.description}</p>
             </li>
           );
         })}

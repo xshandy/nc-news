@@ -1,7 +1,14 @@
 function SortingDropdown({ setSearchParams, orderQuery, sortByQuery }) {
-  const sortByGreenList = ["created_at", "votes", "comment_count"];
+  const sortOptions = [
+    { value: "created_at", label: "Date" },
+    { value: "votes", label: "Votes" },
+    { value: "comment_count", label: "Comments" },
+  ];
 
-  const orderOption = ["desc", "asc"];
+  const orderOptions = [
+    { value: "desc", label: "Descending" },
+    { value: "asc", label: "Ascending" },
+  ];
 
   function handleSortByChange(e) {
     const newSortBy = e.target.value;
@@ -20,17 +27,17 @@ function SortingDropdown({ setSearchParams, orderQuery, sortByQuery }) {
   }
 
   return (
-    <div>
+    <div className="sorting-container">
       <label htmlFor="dropdown">Sort by:</label>
       <select
         id="dropdown"
         onChange={handleSortByChange}
         value={sortByQuery || "created_at"}
       >
-        {sortByGreenList.map((sortOption, index) => {
+        {sortOptions.map(({ value, label }, index) => {
           return (
-            <option key={index} value={sortOption}>
-              {sortOption}
+            <option key={index} value={value}>
+              {label}
             </option>
           );
         })}
@@ -42,10 +49,10 @@ function SortingDropdown({ setSearchParams, orderQuery, sortByQuery }) {
         onChange={handleOrderByChange}
         value={orderQuery || "desc"}
       >
-        {orderOption.map((orderOption, index) => {
+        {orderOptions.map(({ value, label }, index) => {
           return (
-            <option key={index} value={orderOption}>
-              {orderOption}
+            <option key={index} value={value}>
+              {label}
             </option>
           );
         })}

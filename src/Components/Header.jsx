@@ -3,8 +3,8 @@ import { Link } from "react-router";
 function Header() {
   return (
     <>
-      <Link to="/" className="header-title">
-        <h1>NC News</h1>
+      <Link to="/">
+        <h1 className="header-title">NC News</h1>
       </Link>
     </>
   );

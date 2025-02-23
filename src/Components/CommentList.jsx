@@ -3,6 +3,7 @@ import { fetchCommentsByArticleId } from "../api";
 import AddNewComment from "./AddNewComment";
 import DeleteAComment from "./DeleteAComment";
 import { useUser } from "./UserContext";
+import { Link } from "react-router";
 
 function CommentList({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -41,7 +42,9 @@ function CommentList({ article_id }) {
             selectedUser={selectedUser}
           />
         ) : (
-          <p>Please log in to add a comment</p>
+          <Link to="/users">
+            <p>Please log in to add a comment</p>
+          </Link>
         )}
 
         <ul>

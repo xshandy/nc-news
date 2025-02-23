@@ -49,7 +49,7 @@ function ArticleList() {
           return (
             <li key={article.article_id}>
               <Link to={`/articles/${article.article_id}`}>
-                <h3>{article.title}</h3>
+                <h3 className="article-title">{article.title}</h3>
                 <img src={article.article_img_url} />
               </Link>
             </li>
