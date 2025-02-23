@@ -27,20 +27,32 @@ function SingleArticle() {
     return <p>Loading...</p>;
   }
 
+  function formatDate(timestamp) {
+    return new Date(timestamp).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  }
+
   return (
     <div className="singleArticle-container">
       <h2>{article.title}</h2>
-      <p className="author">Posted by:{article.author}</p>
 
+      <img
+        src={article.article_img_url}
+        alt={`Image for article: ${article.title}`}
+      />
+      <p className="author">
+        by <strong>{article.author}</strong>
+      </p>
+      <p className="article-date">{formatDate(article.created_at)}</p>
+      <p className="article-body">{article.body}</p>
       <Voting
         votes={article.votes}
         article_id={article_id}
         setArticle={setArticle}
       />
-
-      <img src={article.article_img_url} />
-      <p>{article.body}</p>
-
       <CommentList article_id={article_id} />
     </div>
   );

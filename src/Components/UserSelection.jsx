@@ -6,10 +6,14 @@ function UserSelection() {
   console.log("UserSelection values:", { selectedUser, loginUser, logoutUser });
 
   return (
-    <div>
+    <div className="User-selection">
       <h2>Select a User</h2>
       <ValidUsers selectedUser={selectedUser} setSelectedUser={loginUser} />
-      {selectedUser && <p>Logged in as: {selectedUser}</p>}
+      {selectedUser && (
+        <p className="selected-user">
+          Logged in as: <strong>{selectedUser}</strong>
+        </p>
+      )}
       {selectedUser && (
         <button onClick={() => logoutUser()} className="logout-button">
           Log Out

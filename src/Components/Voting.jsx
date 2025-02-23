@@ -23,14 +23,20 @@ function Voting({ article_id, votes }) {
 
   return (
     <>
-      {message}
-      <p>Votes:{votes + voteCount}</p>
-      <button onClick={handleIncvote}>
-        <i className="fa-regular fa-thumbs-up"></i>
-      </button>
-      <button onClick={handleDecVote}>
-        <i className="fa-regular fa-thumbs-down"></i>
-      </button>
+      {message && <p className="vote-message">{message}</p>}
+      <div className="vote-container">
+        <p>
+          <strong>Votes: {votes + voteCount}</strong>
+        </p>
+        <div className="vote-buttons">
+          <button onClick={handleIncvote}>
+            <i className="fa-regular fa-thumbs-up fa-xl thumb-up"></i>
+          </button>
+          <button onClick={handleDecVote}>
+            <i className="fa-regular fa-thumbs-down fa-xl thumb-down"></i>
+          </button>
+        </div>
+      </div>
     </>
   );
 }

@@ -35,9 +35,31 @@ body {
   width: 90%;
 }
 
+.singleArticle-container {
+  max-width: 850px;
+  margin: auto;
+}
+
 .article-title {
   max-width: 90%;
   word-wrap: break-word;
+}
+
+.article-date {
+  text-align: left;
+  color: rgba(59, 59, 59, 0.887);
+}
+
+.author {
+  text-align: right;
+}
+
+.author strong {
+  color: #8b80f9;
+}
+
+.article-body {
+  text-align: left;
 }
 
 .navbar {
@@ -59,7 +81,7 @@ body {
 }
 
 .navbar a:hover {
-  background-color: #4fa3d1;
+  background-color: #8b80f9;
 }
 
 ul {
@@ -90,13 +112,48 @@ img {
   text-align: right;
 }
 
+.vote-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.vote-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.vote-buttons button {
+  background-color: #cfbff7;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.vote-buttons button:hover {
+  opacity: 0.8;
+}
+
+.vote-buttons .thumb-up:hover {
+  color: green;
+}
+
+.vote-buttons .thumb-down:hover {
+  color: red;
+}
+
+.comments-container {
+  margin-top: 50px;
+}
+
 .comment-input {
   padding: 30px;
   width: 75%;
 }
 
 .comment-input:focus {
-  border-color: #6cd4ff;
+  border-color: #8b80f9;
   outline: none;
 }
 
@@ -108,9 +165,12 @@ img {
 }
 
 .comment-submit:hover {
-  background-color: #6cd4ff;
+  background-color: #8b80f9;
   color: white;
   border: none;
+}
+.User-selection {
+  margin-top: 40px;
 }
 
 .select-user {
@@ -119,7 +179,25 @@ img {
   border-radius: 5px;
 }
 .select-user:focus {
-  border-color: #6cd4ff;
+  border-color: #8b80f9;
+  outline: none;
+}
+
+.selected-user strong {
+  color: #8b80f9;
+}
+
+.logout-button {
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.logout-button:hover {
+  background-color: #8b80f9;
+  color: white;
+  border: none;
 }
 
 .error-message {
